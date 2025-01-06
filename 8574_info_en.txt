@@ -1,4 +1,4 @@
-PCF8574(A).
+# PCF8574(A).
 
 It is an I/O port expander with control via the i2c bus. This chip contains only one internal register,
 which is its physical I/O port. That is, if you transfer a byte to it, it will immediately be set to its pins.
