@@ -1,0 +1,29 @@
+PCF8574(A).
+
+It is an I/O port expander with control via the i2c bus. This chip contains only one internal register,
+which is its physical I/O port. That is, if you transfer a byte to it, it will immediately be set to its pins.
+
+If you read a byte from it, it will reflect the logical states on its pins.
+
+When applying a logical "0" to the output, the chip pulls its pin(s) to ground (GND),
+When applying a log. "1" to the output, the chip connects its pin(s) to +power (Vdd) through a current source(!) of 100 μA.
+Therefore, you cannot get a "real" log. "1" at the output!
+This is done in order to configure the PCF8574 pin for input/output without additional(!) registers.
+
+You just need to write a log. "1" (set the state of the IC pin to Vdd) and can simply short it to GND.
+The current source will not allow the output stage of the I/O expander to "burn out".
+
+If the pin of the microcircuit is pulled to the ground, then the ground potential is on it, and a logical 0 is read.
+If the pin of the microcircuit is pulled to Vdd, then a logical 1 is read.
+
+That is, to configure the pin as DI, it is necessary that a logical "1" is written in the corresponding register bit.
+
+The load must be connected between the pin of the microcircuit and GND!
+
+To configure the pin as DO, nothing is needed!
+
+If the load connected to the pin of the microcircuit switches to the "1" state at a current less (!) than 100 μA, then everything is fine.
+Write "1" to the desired bit, the load to "1". Write "0" and the load switches to "0".
+
+But if you have a LED/LED load or something else that requires a current of more than 100 µA, then you need to write logical 0 to the corresponding register bit.
+That is, turn on the load with a logical zero!!! The current, in this case, goes to the load along the path: Vdd -> load -> microcircuit output -> internal microcircuit transistor -> GND.
