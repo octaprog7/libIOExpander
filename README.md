@@ -1,7 +1,6 @@
 # libIOExpander
-MicroPython library for control I/O Expanders with Serial Interface.
-Supported devices: MCP23017, PCA9555, PCF8574.
-Uses common interface from ioexpander.py.
+Библиотека MicroPython для управления расширителями ввода-вывода с последовательным интерфейсом.
+Поддерживаемые устройства: MCP23017, PCA9555, PCF8574.
+Использует общий интерфейс из ioexpander.py.
 
-Information on using PCF8574: [here](./8574_info_en.txt). 
 Информация по использованию PCF8574: [here](./8574_info_ru.txt).
